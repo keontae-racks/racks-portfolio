@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랙스코리아(주) - RACKSKOREA Inc.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* 로고 기반 정확한 심볼 컬러 변수 설정 */
+        :root {
+            --primary-blue: #10528B;   /* 로고 상단의 짙은 파란색 */
+            --sky-blue: #2CA7E2;      /* 로고 하단의 시원한 하늘색 */
+            --light-bg: #F4F7FC;      /* 깔끔한 연그레이 배경 */
+            --dark-text: #2C3E50;     /* 본문 텍스트 색상 */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Malgun Gothic', dotum, sans-serif; }
+        body { color: var(--dark-text); background-color: #fff; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+
+        /* 헤더 / 네비게이션 */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 10%; background: #fff; border-bottom: 1px solid #eee;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; color: var(--primary-blue); letter-spacing: -1px; }
+        .logo span { color: var(--sky-blue); }
+        .logo .corp-type { font-family: 'Malgun Gothic', sans-serif; font-size: 16px; font-weight: bold; margin-left: 5px; color: #555; }
+        
+        nav a { margin-left: 30px; font-weight: 600; color: #555; transition: color 0.2s; }
+        nav a:hover { color: var(--sky-blue); }
+
+        /* 메인 비주얼 배너 (로고 감성 반영) */
+        .hero {
+            background: linear-gradient(180deg, var(--primary-blue) 60%, #0B3961 100%);
+            color: #fff; padding: 120px 10%; text-align: left;
+            position: relative; overflow: hidden;
+            border-bottom: 8px solid var(--sky-blue); /* 로고 하단 하늘색 포인트를 배너 하단에 적용 */
+        }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 54px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1.5px; }
+        .hero h1 span { color: var(--sky-blue); }
+        .hero p { font-size: 18px; color: #E2F2FF; max-width: 700px; font-weight: 300; line-height: 1.7; }
+
+        /* 섹션 공통 */
+        section { padding: 90px 10%; }
+        .section-title { font-size: 28px; font-weight: bold; margin-bottom: 45px; text-align: center; color: var(--primary-blue); }
+        .section-title span { color: var(--sky-blue); }
+
+        /* 회사 소개 섹션 */
+        .about-box { background: var(--light-bg); padding: 45px; border-radius: 8px; border-left: 6px solid var(--primary-blue); }
+        .about-box p { font-size: 17px; margin-bottom: 12px; color: #444; }
+        .about-box p:last-child { margin-bottom: 0; }
+
+        /* 포트폴리오 카테고리 탭 */
+        .tab-container { display: flex; justify-content: center; margin-bottom: 35px; gap: 15px; }
+        .tab-btn {
+            padding: 10px 28px; border: 1px solid #ddd; background: #fff;
+            border-radius: 30px; cursor: pointer; font-weight: 600; font-size: 15px; transition: all 0.3s;
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary-blue); color: #fff; border-color: var(--primary-blue);
+        }
+
+        /* 포트폴리오 그리드 레이아웃 */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+        .portfolio-item {
+            background: #fff; border-radius: 8px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(16, 82, 139, 0.06); border: 1px solid #eef2f5;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .portfolio-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(16, 82, 139, 0.12); }
+        .portfolio-img {
+            width: 100%; height: 230px; background-color: #EBF2F7;
+            display: flex; justify-content: center; align-items: center; color: #8CA3BA; font-size: 14px;
+            border-bottom: 1px solid #eef2f5;
+        }
+        .portfolio-info { padding: 22px; }
+        .portfolio-tag {
+            display: inline-block; padding: 3px 10px; font-size: 12px; font-weight: bold;
+            border-radius: 4px; margin-bottom: 12px;
+        }
+        .tag-auto { background: #E2F2FF; color: var(--primary-blue); }
+        .tag-demo { background: #E6F7FF; color: #0A7CA8; }
+        .tag-maint { background: #F0F4F8; color: #627D98; }
+        .portfolio-info h3 { font-size: 19px; margin-bottom: 10px; color: #111; }
+        .portfolio-info p { font-size: 14px; color: #627D98; }
+
+        /* 문의하기 섹션 */
+        .contact-box { background: var(--light-bg); padding: 50px; border-radius: 8px; text-align: center; }
+        .contact-info { font-size: 17px; color: #444; line-height: 2; }
+        .contact-info p { margin-bottom: 15px; }
+        .contact-info strong { color: var(--primary-blue); display: inline-block; width: 90px; text-align: left; }
+        .contact-info .highlight { color: var(--primary-blue); font-weight: bold; font-size: 20px; font-family: 'Montserrat', sans-serif; margin-top: 20px; letter-spacing: 1px; }
+
+        /* 푸터 */
+        footer { background: #1A2633; color: #8CA3BA; padding: 35px 10%; text-align: center; font-size: 14px; border-top: 4px solid var(--primary-blue); }
+        footer .footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #fff; margin-bottom: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">racks<span>.kr</span><span class="corp-type">랙스코리아(주)</span></div>
+        <nav>
+            <a href="#about">회사소개</a>
+            <a href="#portfolio">주요실적</a>
+            <a href="#contact">문의하기</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>racks<span>.kr</span></h1>
+        <p>자동화 설비 · 광학계 · 검사테이블 · 데모장비 주문제작 전문<br>랙스코리아(주)는 고객이 요구하는 정밀도와 안정성을 갖춘 최적의 맞춤형 장비를 설계 및 제작합니다.</p>
+    </div>
+
+    <section id="about">
+        <div class="section-title">회사 <span>소개</span></div>
+        <div class="about-box">
+            <p><strong>랙스코리아(주)</strong>는 산업용 자동화 설비 및 특수 목적용 데모기, 검사 장비 전문 제조 기업입니다.</p>
+            <p>풍부한 설계 경험과 정밀 제어 기술을 바탕으로, 기획부터 제작, 안정적인 사후 관리 및 유지보수까지 원스톱 솔루션을 제공합니다.</p>
+        </div>
+    </section>
+
+    <section id="portfolio" style="background-color: var(--light-bg);">
+        <div class="section-title">주요 <span>실적</span></div>
+        
+        <div class="tab-container">
+            <button class="tab-btn active">전체보기</button>
+            <button class="tab-btn">자동화</button>
+            <button class="tab-btn">데모기</button>
+            <button class="tab-btn">유지보수</button>
+        </div>
+
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item">
+                <div class="portfolio-img">장비 사진 등록 예정</div>
+                <div class="portfolio-info">
+                    <span class="portfolio-tag tag-auto">자동화</span>
+                    <h3>정밀 검사 테이블 설비</h3>
+                    <p>고정밀 광학계 검사용 맞춤형 테이블 프레임 및 제어 시스템 제작</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">장비 사진 등록 예정</div>
+                <div class="portfolio-info">
+                    <span class="portfolio-tag tag-demo">데모기</span>
+                    <h3>전시용 데모 장비 제작</h3>
+                    <p>제품 기능 시연 및 테스트 목적의 커스텀 모션 제어 데모기 구축</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-img">장비 사진 등록 예정</div>
+                <div class="portfolio-info">
+                    <span class="portfolio-tag tag-maint">유지보수</span>
+                    <h3>생산 라인 구동부 개조 및 보수</h3>
+                    <p>노후화된 서보 시스템 교체 및 안정성 향상을 위한 회로 개선 작업</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">문의<span>하기</span></div>
+        <div class="contact-box">
+            <div class="contact-info">
+                <p style="margin-bottom: 25px;">랙스코리아(주)는 언제나 열려 있습니다. 제작 문의 및 견적 요청은 아래로 연락해주시기 바랍니다.</p>
+                <p><strong>전화번호</strong> 010-9478-1903</p>
+                <p><strong>이메일</strong> pkt@racks.kr</p>
+                <p><strong>주소</strong> 경기도 하남시 미사강변한강로 155, SKv1 923-1호</p>
+                <div class="highlight">WWW.RACKS.KR</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">RACKSKOREA Inc.</div>
+        <p>&copy; 2026 RACKSKOREA Inc. All Rights Reserved. | www.racks.kr</p>
+    </footer>
+
+</body>
+</html>
